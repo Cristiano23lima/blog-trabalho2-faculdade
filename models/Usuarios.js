@@ -1,12 +1,18 @@
-// const { Sequelize, DataTypes} = require("sequelize");
-
-const Usuarios = (Sequelize, DataTypes) => {
-    return Sequelize.define('usuarios', {
+module.exports = (Sequelize, DataTypes) => {
+    const Usuarios = Sequelize.define('Usuarios', {
         primeiroNome: DataTypes.STRING,
         ultimoNome: DataTypes.STRING,
         biografia: DataTypes.TEXT,
-        idade: DataTypes.INTEGER
-    })
-} 
+        idade: DataTypes.INTEGER,
+        email: DataTypes.STRING,
+        senha: DataTypes.STRING
+    });
 
-module.exports = Usuarios;
+
+    Usuarios.associate = models => {
+        Usuarios.hasMany(models.Posts);
+    }
+
+    return Usuarios;
+
+}
