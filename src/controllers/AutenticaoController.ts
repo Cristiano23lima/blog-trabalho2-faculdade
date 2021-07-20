@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
 const jwt = require('jsonwebtoken');
 const { Usuarios } = require("../../models");
@@ -18,6 +18,20 @@ class AutenticacaoController{
         });
 
         return res.status(200).json({auth: true, token: token});
+    }
+
+    async autorizacao(req: Request, res: Response, next: any){
+        const token = req.headers.authorization;
+        
+        if(!token){
+            return res.status(401).json({auth: false, mensagem: "Não autorizado, por favor faça login para prosseguir"});
+        }
+
+        jwt.verify(token, process.env.SECRET, (err: any, decoded: any) => {
+            if(err) return res.status(500).json({auth: false, mensagem: "Falha na autenticação por esse token"});
+
+            next();
+        })
     }
 }
 
