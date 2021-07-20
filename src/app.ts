@@ -2,6 +2,9 @@
 const express = require("express");
 const routes = require('./routes');
 
+require("dotenv-safe").config();
+
+
 class App{
     server: any = null;
 
