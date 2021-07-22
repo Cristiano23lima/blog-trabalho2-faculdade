@@ -35,12 +35,16 @@ class PostsController{
     }
 
     async findAllPosts(req: Request, res: Response){
-        let posts = await Posts.findAll({include: {
-            model: Usuarios,
-            attributes: ['primeiroNome', 'ultimoNome', 'email']
-        }, order: [
-            ['createdAt', 'DESC']
-        ]});
+        let posts = await Posts.findAll({
+            include: {
+                model: Usuarios,
+                attributes: ['primeiroNome', 'ultimoNome', 'email']
+            }, 
+            order: [
+                ['createdAt', 'DESC']
+            ],
+            attributes: ['id', 'descricao', 'quantidadeLikes', 'createdAt']
+        });
 
         return res.status(200).json(posts);
     }
