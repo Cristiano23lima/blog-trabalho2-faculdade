@@ -30,6 +30,7 @@ class AutenticacaoController{
         jwt.verify(token, process.env.SECRET, (err: any, decoded: any) => {
             if(err) return res.status(500).json({auth: false, mensagem: "Falha na autenticação por esse token"});
 
+            req.headers.idUsuario = decoded.id;
             next();
         })
     }
