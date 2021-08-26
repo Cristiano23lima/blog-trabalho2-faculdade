@@ -17,6 +17,7 @@ if(env === "development"){
     sequelize = new Sequelize(config.database, config.username, config.password, config);
   }
 }else{
+  console.log("CONFIGURANDO BANCO DE DADOS PRODUÇÃO");
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 }
 
