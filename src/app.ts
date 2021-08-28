@@ -1,4 +1,4 @@
-import { NextFunction, Response } from "express";
+import { NextFunction, Response, Request } from "express";
 
 const express = require("express");
 const routes = require('./routes');
@@ -20,8 +20,8 @@ class App {
 
     ativarCors() {
         this.server.use((req: Request, res: Response, next: NextFunction) => {
-            req.headers.set("Access-Control-Allow-Origin", "*");
-            req.headers.set("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
             cors();
             next();
         });
