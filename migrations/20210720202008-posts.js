@@ -20,6 +20,7 @@ module.exports = {
       },
       descricao: {type: Sequelize.DataTypes.TEXT, allowNull: false},
       quantidadeLikes: {type: Sequelize.DataTypes.INTEGER},
+      titulo: {type: Sequelize.DataTypes.STRING},
       createdAt: {type: Sequelize.DataTypes.DATE, allowNull: true},
       updatedAt: {type: Sequelize.DataTypes.DATE, allowNull: true},
     })
