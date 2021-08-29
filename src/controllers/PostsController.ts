@@ -34,6 +34,18 @@ class PostsController {
         return res.status(200).json({ mensagem: "Post deletado com sucesso" });
     }
 
+    async findById(req: Request, res: Response) {
+        const { idPost } = req.params;
+
+        if (!idPost) {
+            return res.status(400).json({ mensagem: "Nenhum post encontrado" });
+        }
+
+        const post = await Posts.findOne({ where: { id: idPost } });
+
+        return res.status(200).json(post);
+    }
+
     async findAllPosts(req: Request, res: Response) {
         let posts = await Posts.findAll({
             include: {

@@ -16,6 +16,7 @@ rotas.put("/usuario/atualizar-info/:id", AutenticacaoController.autorizacao, Usu
 rotas.post("/posts/save", AutenticacaoController.autorizacao, PostsController.save);
 rotas.delete("/posts/deletar/:idPost", AutenticacaoController.autorizacao, PostsController.delete);
 rotas.get("/posts/buscar-posts", PostsController.findAllPosts);
+rotas.get("/posts/:idPost", PostsController.findById);
 
 //ROTAS DA AUTENTICAÇÃO
 rotas.post("/login", AutenticacaoController.login);
