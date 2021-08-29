@@ -43,7 +43,7 @@ class PostsController {
             order: [
                 ['createdAt', 'DESC']
             ],
-            attributes: ['id', 'descricao', 'quantidadeLikes', 'createdAt']
+            attributes: ['id', 'descricao', 'quantidadeLikes', 'createdAt', 'titulo']
         });
 
         return res.status(200).json(posts);
